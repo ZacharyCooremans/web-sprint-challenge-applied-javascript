@@ -32,14 +32,14 @@ const Tabs = (topics) => {
   topic.appendChild(techTab);
 
   // set value
-  //javaTab.textContent = topics['javascript'];
-  //bootTab.textContent = "`${topics['bootstrap']}`;"
-  //techTab.textContent = "`${topics['technology']}`"
+  // javaTab.textContent = topics['javascript'];
+  // bootTab.textContent = topics['bootstrap'];
+  // techTab.textContent = topics['technology'];
 
   return topic
 }
 const tabsContainer = document.querySelector('.tabs-container');
-tabsContainer.appendChild(Tabs())
+//tabsContainer.appendChild(Tabs())
 const tabsAppender = (selector) => {
   // TASK 4
   // ---------------------
@@ -51,13 +51,13 @@ const tabsAppender = (selector) => {
   selector = axios
   .get(`https://lambda-times-api.herokuapp.com/topics`)
   .then((response) =>{
-    const array = response.data.topics;
+    const array = response.data['topics'];
+    console.log('THIS IS RESPONSE', response)
     console.log('THIS IS ARRAY',array)
-    tabsContainer.append(Tabs(array))
-    // array.forEach((item) =>{
-    //   //const cardTab = Tabs(array)
-    //   tabsContainer.append(Tabs(item))
-    // })
+    array.forEach(item =>{
+      tabsContainer.append(Tabs(item))
+    })
+   
   })
   .catch((err) =>{
     console.log(err)

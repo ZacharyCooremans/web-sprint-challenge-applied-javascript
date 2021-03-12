@@ -67,9 +67,9 @@ const cardAppender = (selector) => {
   selector = axios
   .get("https://lambda-times-api.herokuapp.com/articles")
   .then((res) =>{
-    console.log('RESPONSE: \n \n', res)
-    console.log('RESPONSE DATA: \n \n', res.data)
-    console.log('RESPONSE DATA ARTICLES: \n \n', res.data.articles.bootstrap)
+    //console.log('RESPONSE: \n \n', res)
+    //console.log('RESPONSE DATA: \n \n', res.data)
+    //console.log('RESPONSE DATA ARTICLES: \n \n', res.data.articles.bootstrap)
     const data = res.data.articles.bootstrap
     data.forEach((article) =>{
       const itemCard = Card(article);

@@ -35,7 +35,6 @@ const Header = (title, date, temp) => {
   return head
 }
 const containerRight = document.querySelector('.header-container')
-console.log(Header())
 //containerRight.appendChild(Header())
 const headerAppender = (selector) => {
   // TASK 2/
@@ -49,7 +48,6 @@ const headerAppender = (selector) => {
    
   
 };
-//Header.appendChild(headerAppender())
-console.log('TRYING TO SEE', Header());
+
 
 export { Header, headerAppender }
