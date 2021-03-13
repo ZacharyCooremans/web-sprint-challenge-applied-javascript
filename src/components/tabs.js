@@ -19,17 +19,27 @@ const Tabs = (topics) => {
   const javaTab = document.createElement('div');
   const bootTab = document.createElement('div');
   const techTab = document.createElement('div');
+  const jTab = document.createElement('div');
+  const nodeTab = document.createElement('div');
+
+
 
   // set class name
-  topic.classList = 'topics';
+  topic.classList = 'topic';
   javaTab.classList = 'tab';
   bootTab.classList = 'tab';
   techTab.classList = 'tab';
+  jTab.classList = 'tab';
+  nodeTab.classList = 'tab';
+
 
   // set hierarchy
   topic.appendChild(javaTab);
   topic.appendChild(bootTab);
   topic.appendChild(techTab);
+  topic.appendChild(jTab);
+  topic.appendChild(nodeTab);
+
 
   // set value
   // javaTab.textContent = topics['javascript'];
@@ -39,7 +49,7 @@ const Tabs = (topics) => {
   return topic
 }
 const tabsContainer = document.querySelector('.tabs-container');
-//tabsContainer.appendChild(Tabs())
+tabsContainer.appendChild(Tabs())
 const tabsAppender = (selector) => {
   // TASK 4
   // ---------------------
@@ -51,12 +61,15 @@ const tabsAppender = (selector) => {
   selector = axios
   .get(`https://lambda-times-api.herokuapp.com/topics`)
   .then((response) =>{
-    const array = response.data['topics'];
-    console.log('THIS IS RESPONSE', response)
-    console.log('THIS IS ARRAY',array)
-    array.forEach(item =>{
-      tabsContainer.append(Tabs(item))
-    })
+    const array = response.data.topics;
+    //console.log('THIS IS RESPONSE', response)
+    //console.log('THIS IS ARRAY',array)
+    
+    tabsContainer.append(Tabs(array))
+    // array.forEach(item =>{
+    //   console.log("AM I GETTING SOMETHING HERER")
+    //   Tabs.append(tabsContainer(item))
+    // })
    
   })
   .catch((err) =>{

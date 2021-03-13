@@ -1,6 +1,5 @@
 import axios from "axios"
 const Card = (article) => {
-  console.log('THIS IS ARTICLE', article)
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -43,17 +42,18 @@ const Card = (article) => {
   // set values
   headline.textContent = headline;
   author.textContent = `'author goes here', author`;
-  //src.textContent = {authorPhoto};
+  src.textContent = src
   //authorName = `wga ${AUTHORNAME??}`;
+
   card.addEventListener('click', (event) =>{
     console.log(headline)
   })
-
+  console.log("THIS IS ARTICLE", article)
   return card
 
 }
 const cardsContainer = document.querySelector('.cards-container');
-cardsContainer.append(Card());
+//cardsContainer.append(Card());
 
 const cardAppender = (selector) => {
   // TASK 6
@@ -64,15 +64,18 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-  selector = axios
+
+
+  axios
   .get("https://lambda-times-api.herokuapp.com/articles")
   .then((res) =>{
     //console.log('RESPONSE: \n \n', res)
     //console.log('RESPONSE DATA: \n \n', res.data)
     //console.log('RESPONSE DATA ARTICLES: \n \n', res.data.articles.bootstrap)
     const data = res.data.articles.bootstrap
-    data.forEach((article) =>{
-      const itemCard = Card(article);
+    console.log("THIS IS DATA", data)
+    data.forEach((item) =>{
+      const itemCard = Card(item);
       cardsContainer.append(itemCard)
     });
     // const stuff = Card(data);
